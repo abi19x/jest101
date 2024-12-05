@@ -1,0 +1,14 @@
+{
+  "name": "jest101",
+  "version": "1.0.0",
+  "description": "This is a trial repository of installing and using jest, a JavaScript testing framework. Codes in this repository are used from code institute lectures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
