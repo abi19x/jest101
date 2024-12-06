@@ -1,7 +1,7 @@
 const { TestScheduler } = require("jest");
 const { hasUncaughtExceptionCaptureCallback } = require("process");
 
-const { game, newGame, showScore } = require("./game");
+const { game, newGame, showScore, addTurn } = require("./game");
 
 beforeAll(() => {
     let fs = require("fs");
@@ -44,10 +44,27 @@ describe("newGgame works correctly", () => {
     test("should clear the playerMoves array", () => {
         expect(game.playerMoves.length).toBe(0);
     });
-    test("should clear the computer sequence array", () => {
-        expect(game.currentGame.length).toBe(0);
+    test("should be one move in the computer`s game array", () => {
+        expect(game.currentGame.length).toBe(1);
     });
     test("should display 0 for the element with id of score", () => {
         expect(document.getElementById("score").innerText).toEqual(0);
     })
+});
+
+describe("gamePlay works correctly", () => {
+    beforeEach(() => {
+        game.score = 0;
+        game.playerMoves = [];
+        game.currentGame = [];
+    });
+    afterEach(() => {
+        game.score = 0;
+        game.playerMoves = [];
+        game.currentGame = [];
+    })
+    test("addTurn adds a new turn to the game", () => {
+        addTurn();
+        expect(game.currentGame.length).toBe(2);
+    });
 });
